@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :category, only: [:index, :show]
+  resources :categories, only: [:index, :show]
   resources :products, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
