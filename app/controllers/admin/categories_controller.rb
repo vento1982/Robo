@@ -23,7 +23,7 @@ class Admin::CategoriesController < Admin::BaseController
   def update
   	@category =Category.find(params[:id])
   	if @category.save
-  		redirect_to admin_categories_path. notice: "Dokonałeś edycji kategorii."
+  		redirect_to admin_categories_path, notice: "Dokonałeś edycji kategorii."
   	else
   		render action: :edit
   	end
