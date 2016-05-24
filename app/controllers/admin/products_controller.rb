@@ -1,6 +1,5 @@
 class Admin::ProductsController < Admin::BaseController
   def index
-
   	@products = Product.page(params[:page]).per(30)
   end
 
@@ -12,7 +11,7 @@ class Admin::ProductsController < Admin::BaseController
 
   	@product = Product.new(product_params)
   	if @product.save
-  		redirect_to admin_product_path, notice: "Pomyślnie dodano produkt."
+  		redirect_to admin_products_path, notice: "Pomyślnie dodano produkt."
   	else
   		render action: :new
   	end
@@ -24,7 +23,7 @@ class Admin::ProductsController < Admin::BaseController
   def update
   	@product = Product.find(params[:id])
   	if @product.save
-  		redirect_to admin_product_path, notice: "Pomyślnie zaktualizowano produkt."
+  		redirect_to admin_products_path, notice: "Pomyślnie zaktualizowano produkt."
   	else
   		render action: :edit
   	end
