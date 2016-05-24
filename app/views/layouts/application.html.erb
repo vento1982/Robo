@@ -13,11 +13,11 @@
       			<a class="navbar-brand" <%= root_path %>>Robot</a>
     		</div>
     		<ul class="nav navbar-nav">
-    		<li <% if params[:action] == "index" %> class="active" <% end %>><%= link_to "Start", root_path %></li>
-    		<li <% if params[:action] == "privacy" %> class="active" <% end %>><%= link_to "Polityka prywatności", privacy_path %></li>
-    		<li <% if params[:action] == "terms" %> class="active" <% end %>><%= link_to "Regulamin", terms_path %></li>
-    		<li <% if params[:action] == "shipping" %> class="active" <% end %>><%= link_to "Dostawa", shipping_path %></li>
-    		<li <% if params[:action] == "about" %> class="active" <% end %>><%= link_to "O sklepie", about_path %></li>
+    		<li <% if [params[:controller], params[:action]] == ["products", "index"] %> class="active" <% end %>><%= link_to "Start", root_path %></li>
+    		<li <% if [params[:controller], params[:action]] == ["static", "privacy"] %> class="active" <% end %>><%= link_to "Polityka prywatności", privacy_path %></li>
+    		<li <% if [params[:controller], params[:action]] == ["static", "terms"] %> class="active" <% end %>><%= link_to "Regulamin", terms_path %></li>
+    		<li <% if [params[:controller], params[:action]] == ["static", "shipping"] %> class="active" <% end %>><%= link_to "Dostawa", shipping_path %></li>
+    		<li <% if [params[:controller], params[:action]] == ["static", "about"] %> class="active" <% end %>><%= link_to "O sklepie", about_path %></li>
     		</ul>
   		</div>
 	</nav>
@@ -28,7 +28,7 @@
   				<h3>Kategorie</h3>
   				<ul class="nav nav-sidebar">
   					<% Category.all.each do |category| %>
-  						<li>
+  						<li <% if @category == category %> class="active" <% end %> >
   							<%= link_to category.name, category_path(category) %> 
   						</li>
   					<% end %>

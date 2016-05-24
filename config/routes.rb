@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    root to: 'products#index'
+    resources :products
+    resources :categories
+  end
+
   get 'regulami', to: "static#terms", as: :terms
   get 'polityka-prywatnosci', to: "static#privacy", as: :privacy
   get 'dostawa', to: "static#shipping", as: :shipping
@@ -7,8 +13,8 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :categories, only: [:index, :show]
-  resources :products, only: [:show]
+  resources :products, only: [:index, :show], path: "produkt"
+  resources :categories, only: [:show], path: "kategoria"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
