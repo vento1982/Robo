@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525201618) do
+ActiveRecord::Schema.define(version: 20160526094203) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "first_name"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20160525201618) do
 
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
+
+  create_table "order_transitions", force: :cascade do |t|
+    t.string   "to_state",                   null: false
+    t.text     "metadata",    default: "{}"
+    t.integer  "sort_key",                   null: false
+    t.integer  "order_id",                   null: false
+    t.boolean  "most_recent",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "order_transitions", ["order_id", "most_recent"], name: "index_order_transitions_parent_most_recent", unique: true, where: "most_recent"
+  add_index "order_transitions", ["order_id", "sort_key"], name: "index_order_transitions_parent_sort", unique: true
 
   create_table "orders", force: :cascade do |t|
     t.integer  "shipping_type_id"
