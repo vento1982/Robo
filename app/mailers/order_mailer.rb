@@ -25,6 +25,6 @@ class OrderMailer < ApplicationMailer
   def order_cancelled(order)
     @order = order
 
-    mail to: order.address.mail, subject: "Zamówienie zostało anulowane."
+    mail to: order.address.email, subject: "Zamówienie zostało anulowane."
   end
 end

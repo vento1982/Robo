@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     member do
       post :add_product
       post :remove_product
+      get :confirmation
+      post :finish
     end
   end
 
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
     root to: 'products#index'
     resources :products
     resources :categories
+    resources :orders, only: [:show, :index, :update]
   end
 
   get 'regulami', to: "static#terms", as: :terms

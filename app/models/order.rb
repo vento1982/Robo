@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
   has_one :address
   has_many :transitions, class_name: "OrderTransition", autosave: false
 
+  accepts_nested_attributes_for :address
+
   delegate :can_transition_to?, :transition_to!, :transition_to, :current_state,
            to: :state_machine
 
@@ -15,7 +17,7 @@ class Order < ActiveRecord::Base
 
 
   def full_cost
-  	lines_item.map{ |e| e.full_price}.sum + shipping_cost
+  	line_items.map{ |e| e.full_price}.sum + shipping_cost
   end
 
   def self.transition_class
@@ -27,6 +29,6 @@ class Order < ActiveRecord::Base
   end
 
   def self.transition_name
-  	:transition
+  	:transitions
   end
 end

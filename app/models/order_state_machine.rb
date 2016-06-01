@@ -1,7 +1,7 @@
 class OrderStateMachine
 	include Statesman::Machine
 
-	state :new, initail: true
+	state :new, initial: true
 	state :confirmed
 	state :in_progress
 	state :shipped
@@ -28,11 +28,13 @@ class OrderStateMachine
 		OrderMailer.order_shipped(order).deliver
 	end
 
-	def self.state_map
+	def self.states_map
+		{
 		"new" => "Niepotwierdzone",
-		"confirmed" => "Potwierdzone",
-		"in_progress" => "Potwierdzone",
+		"confirmed" => "Złożone przez klienta",
+		"in_progress" => "Przyjęte do realizacji",
 		"shipped" => "Wysłane",
 		"cancelled" => "Anulowane"
+		}
 	end
 end
