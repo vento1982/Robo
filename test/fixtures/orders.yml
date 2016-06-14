@@ -2,8 +2,8 @@
 
 one:
   shipping_type_id: 
-  shipping_cost: 9.99
+  shipping_cost: 10
 
 two:
   shipping_type_id: 
-  shipping_cost: 9.99
+  shipping_cost: 12

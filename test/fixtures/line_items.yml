@@ -2,14 +2,14 @@
 
 one:
   product_id: 
-  unit_price: 9.99
+  unit_price: 6
   quantity: 1
-  order_id: 
+  order_id: 1
   item_name: MyString
 
 two:
   product_id: 
-  unit_price: 9.99
+  unit_price: 6
   quantity: 1
-  order_id: 
+  order_id: 1
   item_name: MyString

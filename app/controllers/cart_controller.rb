@@ -21,6 +21,7 @@ class CartController < ApplicationController
 
   def confirmation
   	@cart = current_cart
+
   end
 
   def finish
