@@ -3,6 +3,7 @@
 one:
   shipping_type_id: 
   shipping_cost: 10
+  shipping_type: one
 
 two:
   shipping_type_id: 
